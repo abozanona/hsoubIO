@@ -1,0 +1,24 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item android:id="@+id/action_message"
+        android:title="@string/messages2"
+        android:orderInCategory="1"
+        android:icon="@drawable/message"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_notification"
+        android:title="@string/notifications2"
+        android:orderInCategory="1"
+        android:icon="@drawable/notification"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_search"
+        android:title="@string/search"
+        android:icon="@android:drawable/ic_search_category_default"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
+</menu>

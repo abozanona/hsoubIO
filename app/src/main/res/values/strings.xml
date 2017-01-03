@@ -1,0 +1,117 @@
+<resources>
+    <string name="app_name">حسوب I/O</string>
+    <string name="title_activity_main2">حسوب I/O</string>
+
+    <string name="hello_blank_fragment">هذه الصفحة قيد الإنشاء.</string>
+    <string name="error_connection">لا يمكن تحميل البيانات الآن, حاول مجدداً في وقت لاحق.</string>
+
+    <string name="rand_h1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur quam sit amet augue tincidunt, eget maximus lorem feugiat. Curabitur id vestibulum mauris. In eget eleifend purus. Nunc tempor erat eros, vitae viverra massa tincidunt id. Donec tincidunt nunc at ipsum commodo, non porttitor tellus vehicula. Pellentesque tempus sem ipsum, sit amet porttitor odio lobortis at. Morbi cursus risus eu urna eleifend, convallis elementum risus lobortis. Vestibulum luctus felis id aliquet egestas. Pellentesque vulputate ultrices nunc ut consequat. Maecenas  nibh, rhoncus sit amet feugiat sed, aliquet sed ligula. Phasellus consectetur laoreet elit, non posuere tellus accumsan sed. Sed tellus quam, varius ac porta id, finibus eget ligula. Proin vestibulum eu augue vitae pulvinar.</string>
+    <string name="rand_h2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur quam sit amet augue tincidunt, eget maximus lorem feugiat. Curabitur id vestibulum mauris. In eget eleifend purus. Nunc tempor erat eros, vitae viverra massa tincidunt id. Donec tincidunt nunc at ipsum commodo, non porttitor tellus vehicula. Pellentesque tempus sem ipsum, sit amet porttitor odio lobortis at. Morbi cursus risus eu urna eleifend, convallis elementum risus lobortis.</string>
+    <string name="rand_h3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur quam sit amet augue tincidunt, eget maximus lorem feugiat. Curabitur id vestibulum mauris. In eget eleifend purus. Nunc tempor erat eros, vitae viverra massa tincidunt id. Donec tincidunt nunc at ipsum commodo, non porttitor tellus vehicula.</string>
+    <string name="rand_h4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec efficitur quam sit amet augue tincidunt,</string>
+    <string name="rand_h5">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="rand_h6">Lorem ipsum dolor</string>
+    <string name="rand_time">12/9/1995</string>
+    <string name="rand_number">15</string>
+    <string name="rand_none"> </string>
+
+    <!-- MainActivity -->
+    <string name="Username">اسم المستخدم</string>
+    <string name="Password">كلمة المرور</string>
+    <string name="SignIn">تسجيل الدخول</string>
+    <string name="Forgot_password">فقدت كلمة المرور؟</string>
+    <string name="newAccount">حساب جديد</string>
+    <string name="Continue_without_Login">متابعة بدون تسجبل الدخول</string>
+    <string name="error_email">البريد الإلكتروني خاطئ.</string>
+    <string name="error_password">لا يمكن لكلمة المرور أن تكون فارغة.</string>
+    <string name="error_login">البريد الإلكتروني أو كلمة المرور غير صالحة</string>
+    <string name="dialog_login_title">تسجيل الدخول</string>
+    <string name="dialog_login_body">يتم الآن تسجيل الدخول</string>
+    <!-- Main2Activity -->
+    <string name="hello_user">مرحبا بك, مستخدم.</string>
+    <string name="hello_user_known">مرحبا بك, X.</string>
+    <string name="hello_email">user@email.com</string>
+    <string name="navigation_drawer_open">إظهار قائمة التنقل الجانبية</string>
+    <string name="navigation_drawer_close">إخفاء قائمة التنقل الجانبية</string>
+    <string name="interact">تفاعل</string>
+    <string name="add_reply">أضف رداً</string>
+    <string name="see_more_communities">اعرض المجتمعات</string>
+    <string name="communities">اعرض المجتمعات:</string>
+
+    <!-- Menus -->
+    <!-- activity_main_drawer -->
+    <string name="my_profile">حسابي الشخصي</string>
+    <string name="notifications">الإشعارات</string>
+    <string name="messages">الرسائل</string>
+    <string name="settings">الإعدادات</string>
+    <string name="posts_list">قائمة المواضيع</string>
+    <string name="contact_with_us">تواصل معنا</string>
+    <string name="about_application">عن التطبيق</string>
+    <string name="about_hsoub_io">عن حسوب I/O</string>
+    <!-- main -->
+    <string name="notifications2">الإشعارات</string>
+    <string name="messages2">الرسائل</string>
+    <string name="search">بحث</string>
+
+    <!-- item_community -->
+    <string name="follow_community">تابع المجتمع</string>
+    <string name="unfollow_community">ألغِ المتابعة</string>
+
+    <!-- item_comment -->
+    <string name="show_comments">إظهار التعليقات</string>
+
+    <!-- fragment_main -->
+    <string name="most_popular">الأكثر شيوعاً</string>
+    <string name="recent">الأحدث</string>
+    <string name="top_day">هذا اليوم</string>
+    <string name="top_week">هذا الأسبوع</string>
+    <string name="top_month">هذا الشهر</string>
+    <string name="top_year">هذه السنة</string>
+
+    <!-- fragment_add_new_post -->
+    <string name="add_link">أضف رابطاً</string>
+    <string name="add_topic">أضف موضوعاً</string>
+    <string name="choose_community">اختر المجتمع المناسب لهذا الموضوع</string>
+    <string name="direct_url">الرابط المباشر</string>
+    <string name="exact_title">العنوان كاملا يصف الموضوع بدقة</string>
+    <string name="new_post_checkbox"> أنا شخص واعٍ، أعلم أني لست في منتدىً، ولقد قرأت إرشادات الاستخدام .هذه المساهمة مفيدة، ليست سبامًا ولا تخالف الشروط.</string>
+    <string name="publish_post">أرسل</string>
+
+    <!-- fragment_messages -->
+
+    <!-- fragment_notifications -->
+
+    <!-- fragment_post -->
+    <string name="could_not_fetch_title">لا يمكن عرض العنوان</string>
+    <string name="could_not_fetch_content">لا يمكن عرض المحتوى</string>
+
+    <!-- fragment_posts_list -->
+    <string name="load_more">اعرض المزيد</string>
+
+    <!-- fragment_profile -->
+    <string name="profile_loading_username">تحميل اسم المستخدم</string>
+    <string name="profile_loading_bio">تحميل السيرة الذاتية</string>
+    <string name="profile_rep">نقاط السمعة</string>
+    <string name="profile_communities">مجتمعات أتابعها</string>
+    <string name="profile_contributes">مساهماتي</string>
+    <string name="profile_comments">تعليقاتي</string>
+
+    <!-- fragment_settings -->
+    <string name="update_settings_online">مرحبا بك X, \n بإمكانك تعديل حسابك بالنقر هنا أيضاً.</string>
+    <string name="settings2">الإعدادات</string>
+    <string name="location">الموقع</string>
+    <string name="about_you">نبذة عنك</string>
+    <string name="private_messages">الرسائل الخاصة</string>
+    <string name="email_settings">الخصوصية والبريد الإلكتروني</string>
+    <string name="settings_option_1">مكِّن الأعضاء من إرسالي رسائل خاصة.</string>
+    <string name="settings_option_2">نبهني ببريد إلكتروني وقت وصول رسالة جديدة.</string>
+    <string name="settings_option_3">أرسل، أسبوعيًا، بريدًا إلكترونيًا يحوي المواضيع الأكثر شعبيّة والتي تناسب اهتماماتي.</string>
+    <string name="settings_option_4">أخفِ وقت آخر وجود لي في حسوب I/O.</string>
+    <string name="settings_option_5">أبقِ مفضَّلتي خاصة، ولا تظهرها لأحد.</string>
+    <string name="settings_update">حدِّث</string>
+
+    <!-- fragment_topic -->
+
+    <!-- fragment_web_browser -->
+
+</resources>

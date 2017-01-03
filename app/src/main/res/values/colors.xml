@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorAccent">#F6602A</color>
+    <color name="colorPrimary">#F6602A</color>
+    <color name="colorPrimaryDark">#A84E2D</color>
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+
+    <color name="postLevel0">#FFFFFF</color>
+    <color name="postLevel1">#EFEFEF</color>
+    <color name="postLevel2">#E7E7E7</color>
+    <color name="postLevel3">#EFEFEF</color>
+</resources>
