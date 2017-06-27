@@ -39,10 +39,31 @@ public class profileFragment extends Fragment {
         new WebService(JsonLinks.web_userInfo(userName), ConnectionMethod.GET, null, null, null, new OnWebServiceDoneListener() {
             @Override
             public void onTaskDone(WebServiceResponse responseData) {
+                String userName, fullname, bio, rep, imgURL;
+                Document doc = Jsoup.parse(responseData.getJSONResponce());
+                userName = doc.select("[class='username']").text();
+                fullname = "";
+                try{
+                    bio = doc.select("p").get(0).text();
+                }
+                catch (Exception e){
+                    bio="";
+                }
+                try {
+                    rep = doc.select(".lastEnter")/*.get(0).select("b")*/.text();
+                }
+                catch (Exception e){
+                    rep="";
+                }
+                try {
+                    imgURL = doc.select(".profileImg").select("img").attr("src");
+                }
+                catch (Exception e){
+                    imgURL="";
+                }
+                /*
                 Pattern pattern;
                 Matcher matcher;
-
-                String userName, fullname, bio, rep, imgURL;
 
                 //=> <span.*class.*full_name.*>(.*)<\/span>
                 pattern = Pattern.compile("<span.*class.*full_name.*>(.*)<\\/span>");
@@ -70,15 +91,6 @@ public class profileFragment extends Fragment {
 
                 Document doc = Jsoup.parse(responseData.getJSONResponce());
 
-/*
-                //=> <p>((.|\n)*)<\/p>
-                pattern = Pattern.compile("<p>((.|\\n)*)<\\/p>");
-                matcher = pattern.matcher(responseData.getJSONResponce());
-                if(matcher.find())
-                    bio = matcher.group(1);
-                else
-                    bio = "X";
-*/
                 Elements Ps = doc.select("p");
                 bio = Ps.get(0).text();
 
@@ -89,7 +101,7 @@ public class profileFragment extends Fragment {
                     imgURL = matcher.group(1);
                 else
                     imgURL = "";
-
+                */
                 CircleImageView profile_image = (CircleImageView)rootView.findViewById(R.id.profile_image);
                 TextView lblUserName = (TextView)rootView.findViewById(R.id.lblUserName);
                 TextView lblBio = (TextView)rootView.findViewById(R.id.lblBio);

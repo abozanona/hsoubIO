@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.support.v4.util.Pair;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,6 +25,8 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.rond.hsoub.API.CustomAPI;
+import com.rond.hsoub.API.CustomAPIEnum;
 import com.rond.hsoub.API.DownloadImageTask;
 import com.rond.hsoub.Main2Activity;
 import com.rond.hsoub.Models.comment;
@@ -90,6 +93,51 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.commentH
             holder.lytChangingColor.setLayoutParams(lp);
         }
 
+        holder.imgVoteUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                comment c = mcomment.get(position);
+                if(c.isMainPost()){
+                    new CustomAPI(CustomAPIEnum.voteUp){
+                        @Override
+                        public void voteUpListener(int count) {
+                            holder.lblVotes.setText(count);
+                        }
+                    }.execute(c.getCommentId());
+                }
+                else{
+                    new CustomAPI(CustomAPIEnum.voteUp){
+                        @Override
+                        public void voteUpListener(int count) {
+                            holder.lblVotes.setText(count);
+                        }
+                    }.execute(c.getParentId(), c.getCommentId());
+                }
+            }
+        });
+
+        holder.imgVoteDown.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                comment c = mcomment.get(position);
+                if(c.isMainPost()){
+                    new CustomAPI(CustomAPIEnum.voteDown){
+                        @Override
+                        public void voteUpListener(int count) {
+                            holder.lblVotes.setText(count);
+                        }
+                    }.execute(c.getCommentId());
+                }
+                else{
+                    new CustomAPI(CustomAPIEnum.voteDown){
+                        @Override
+                        public void voteUpListener(int count) {
+                            holder.lblVotes.setText(count);
+                        }
+                    }.execute(c.getParentId(), c.getCommentId());
+                }
+            }
+        });
         //add inner list of comments even if it's size is zero
         RecyclerView rcv_comments_list;
         RecyclerView.Adapter rcvAdapter;
@@ -185,6 +233,8 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.commentH
         ImageView imgUserImg;
         RecyclerView rcv_inner_comments;
         View lytChangingColor;
+        ImageView imgVoteUp;
+        ImageView imgVoteDown;
         commentHolder(View itemView) {
 
             super(itemView);
@@ -196,6 +246,8 @@ public class commentAdapter extends RecyclerView.Adapter<commentAdapter.commentH
             imgUserImg = (ImageView)itemView.findViewById(R.id.imgUserImg);
             rcv_inner_comments = (RecyclerView)itemView.findViewById(R.id.rcv_inner_comments);
             lytChangingColor = itemView.findViewById(R.id.lytChangingColor);
+            imgVoteUp = (ImageView)itemView.findViewById(R.id.imgVoteUp);
+            imgVoteDown = (ImageView)itemView.findViewById(R.id.imgVoteDown);
 
         }
     }

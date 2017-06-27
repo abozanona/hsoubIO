@@ -118,33 +118,29 @@ public class MainActivity extends AppCompatActivity {
                 } else {
 
 
+                    /*
                     // TODO: 12/24/2016 Complete debugging here
                     // TODO: 12/28/2016 Check for login session cookies
                     if (user.getCookies().getCookieStore().getCookies().size() > 0) {
                         String str = TextUtils.join(";", user.getCookies().getCookieStore().getCookies());
                     }
-                    //HashMap<String,String>hm = new HashMap<>();
-                    //hm.put("Accept", "*/*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript");
-                    //hm.put("Accept-Encoding", "gzip, deflate, br");
-                    //hm.put("Accept-Language", "en,ar;q=0.7,en-US;q=0.3");
-                    //hm.put("Host", "io.hsoub.com");
-                    //hm.put("Referer", "https://io.hsoub.com/");
-                    //hm.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0");
-                    //hm.put("X-CSRF-Token", user.getX_CSRF_Token());
-                    //hm.put("X-Requested-With", "XMLHttpRequest");
-                    //new WebService("https://io.hsoub.com/posts/54117/upvote.json", ConnectionMethod.POST, user.getCookies(), null/*hm*/, "", new OnWebServiceDoneListener() {
-                    //    @Override
-                    //    public void onTaskDone(WebServiceResponse responseData) {
-                    //        String str = responseData.getJSONResponce();
-                    //        Log.d("errrrr", str);;
-                    //    }
+                    */
+                    HashMap<String,String>hm = new HashMap<>();
+                    hm.put("Accept", "*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript");
+                    hm.put("X-CSRF-Token", user.getX_CSRF_Token());
+                    hm.put("X-Requested-With", "XMLHttpRequest");
+                    new WebService("https://io.hsoub.com/posts/54117/upvote.json", ConnectionMethod.POST, user.getCookies(), hm, null, new OnWebServiceDoneListener() {
+                        @Override
+                        public void onTaskDone(WebServiceResponse responseData) {
+                            String str = responseData.getJSONResponce();
+                            Log.d("errrrrT", str);;
+                        }
 
-                    //    @Override
-                    //    public void onError(String trace) {
-                    //        String str = "errooorr";
-                    //        Log.d("errrrr", str);;
-                    //    }
-                    //}).execute();
+                        @Override
+                        public void onError(String trace) {
+                            Log.d("errrrrF", trace);
+                        }
+                    }).execute();
 
 
                     GeneralInstances.user = user;

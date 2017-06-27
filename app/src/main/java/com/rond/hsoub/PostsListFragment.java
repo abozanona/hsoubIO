@@ -59,7 +59,7 @@ public class PostsListFragment extends Fragment {
 
         mPostListItem = new ArrayList<>();
 
-        if(getArguments()!=null && link==null) {
+        if(getArguments()!=null/* && link==null*/) {
             link = getArguments().getString("link", null);
             if(getArguments().getString("searchPrefix", null)!=null)
                 searchPrefix = getArguments().getString("searchPrefix", null);
@@ -109,7 +109,7 @@ public class PostsListFragment extends Fragment {
                         btnLoadMore.setEnabled(true);
                         lytSwipeRefresh.setRefreshing(false);
                     }
-                }.execute("{\"s\":\"\",\"search_community_slug\":\"\",\"post_ids\":[" + viewedPostsClone + "]}", link);
+                }.execute(searchPrefix + viewedPostsClone + "]}", link);
             }
             }
         });

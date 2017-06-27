@@ -7,6 +7,8 @@ import com.jsoup.nodes.Document;
 import com.jsoup.nodes.Element;
 import com.jsoup.select.Elements;
 import com.rond.hsoub.API.APIModules.User;
+import com.rond.hsoub.Classes.GeneralInstances;
+import com.rond.hsoub.Models.Settings;
 import com.rond.hsoub.Models.comment;
 import com.rond.hsoub.Models.community;
 import com.rond.hsoub.Models.postListItem;
@@ -49,6 +51,7 @@ public abstract class CustomAPI extends AsyncTask<String, Void, String> {
             @Override
             public void onTaskDone(WebServiceResponse responseData) {
                 String loginJson = "{\"user\":{\"email\":\"" + username + "\",\"password\":\"" + password + "\"}}";
+                HashMap<String, String> hm = new HashMap<>();
                 new WebService(JsonLinks.login, ConnectionMethod.POST, responseData.getCookieManager(), null, loginJson, new OnWebServiceDoneListener(){
                     @Override
                     public void onTaskDone(WebServiceResponse responseData) {
@@ -66,16 +69,17 @@ public abstract class CustomAPI extends AsyncTask<String, Void, String> {
                             return;
                         }
 
-                        HashMap<String, String> hm = new HashMap<>();
-                        hm.put("Authorization", "Bearer " + user[0].getToken());
                         if(!loginSucceeded[0]){
                             loginListener(null, "2");
                             return;
                         }
+                        HashMap<String, String> hm = new HashMap<>();
+                        hm.put("Authorization", "Bearer " + user[0].getToken());
                         new WebService(JsonLinks.remember, ConnectionMethod.POST, responseData.getCookieManager(), hm, null, new OnWebServiceDoneListener(){
                             @Override
                             public void onTaskDone(WebServiceResponse responseData) {
                                 JSONObject rememberJson;
+                                //String redirect_url;
                                 try {
                                     rememberJson = new JSONObject(responseData.getJSONResponce());
                                     if(rememberJson.has("error")){
@@ -83,6 +87,7 @@ public abstract class CustomAPI extends AsyncTask<String, Void, String> {
                                         loginListener(null, "3");
                                         return;
                                     }
+                                //    redirect_url = rememberJson.getString("redirect_url");
                                 } catch (JSONException e) {
                                     loginSucceeded[0] = false;
                                     loginListener(null, "4");
@@ -403,7 +408,102 @@ public abstract class CustomAPI extends AsyncTask<String, Void, String> {
 
     }
 
+    public void voteUp(String postId, String commentId){
+        String url = (commentId == null)?JsonLinks.postUpvote(postId):JsonLinks.commentUpvote(postId, commentId);
+        HashMap<String,String>hm = new HashMap<>();
+        hm.put("Accept", "*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript");
+        hm.put("X-CSRF-Token", GeneralInstances.user.getX_CSRF_Token());
+        hm.put("X-Requested-With", "XMLHttpRequest");
+        new WebService(url, ConnectionMethod.POST, null, hm, null, new OnWebServiceDoneListener() {
+            @Override
+            public void onTaskDone(WebServiceResponse responseData) {
+                try {
+                    JSONObject obj = new JSONObject(responseData.getJSONResponce());
+                    voteUpListener(obj.getInt("count"));
+                } catch (JSONException e) {
+                    voteUpListener(-1);
+                }
+            }
 
+            @Override
+            public void onError(String trace) {
+                voteUpListener(-1);
+            }
+        }).execute();
+    }
+    public void voteUpListener(int count){
+
+    }
+
+    public void voteDown(String postId, String commentId){
+        String url = (commentId == null)?JsonLinks.postDownvote(postId):JsonLinks.commentDownvote(postId, commentId);
+        HashMap<String,String>hm = new HashMap<>();
+        hm.put("Accept", "*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript");
+        hm.put("X-CSRF-Token", GeneralInstances.user.getX_CSRF_Token());
+        hm.put("X-Requested-With", "XMLHttpRequest");
+        new WebService(url, ConnectionMethod.POST, null, hm, null, new OnWebServiceDoneListener() {
+            @Override
+            public void onTaskDone(WebServiceResponse responseData) {
+                try {
+                    JSONObject obj = new JSONObject(responseData.getJSONResponce());
+                    voteDownListener(obj.getInt("count"));
+                } catch (JSONException e) {
+                    voteDownListener(-1);
+                }
+            }
+
+            @Override
+            public void onError(String trace) {
+                voteDownListener(-1);
+            }
+        }).execute();
+    }
+    public void voteDownListener(int count){
+
+    }
+
+    public void getSettings(){
+        HashMap<String,String>hm = new HashMap<>();
+        hm.put("Accept", "*;q=0.5, text/javascript, application/javascript, application/ecmascript, application/x-ecmascript");
+        hm.put("X-CSRF-Token", GeneralInstances.user.getX_CSRF_Token());
+        hm.put("X-Requested-With", "XMLHttpRequest");
+        new WebService(JsonLinks.web_hsoub, ConnectionMethod.GET, null, hm, null, new OnWebServiceDoneListener() {
+            @Override
+            public void onTaskDone(WebServiceResponse responseData) {
+                Document doc = Jsoup.parse(responseData.getJSONResponce());
+
+                Elements eWebsite = doc.select("[name='user[website]']");
+                Elements eDetails = doc.select("[name='user[details]']");
+                Elements eAllow_messages = doc.select("[name='user[allow_messages]']");
+                Elements eEmail_messages = doc.select("[name='user[email_messages]']");
+                Elements eInterests_email = doc.select("[name='user[interests_email]']");
+                Elements eHide_last_sign_in_at = doc.select("[name='user[hide_last_sign_in_at]']");
+                Elements ePrivate_favorites = doc.select("[name='user[private_favorites]']");
+                Elements eEmbed_images = doc.select("[name='user[embed_images]']");
+
+                String website = eWebsite.attr("value");
+                String details = eDetails.text();
+                boolean allow_messages = eAllow_messages.hasAttr("checked");
+                boolean email_messages = eEmail_messages.hasAttr("checked");
+                boolean interests_email = eInterests_email.hasAttr("checked");
+                boolean hide_last_sign_in_at = eHide_last_sign_in_at.hasAttr("checked");
+                boolean private_favorites = ePrivate_favorites.hasAttr("checked");
+                boolean embed_images = eEmbed_images.hasAttr("checked");
+
+                getSettingsListner(new Settings(
+                        website, details, allow_messages, email_messages, interests_email
+                        ,hide_last_sign_in_at, private_favorites,embed_images
+                ));
+            }
+            @Override
+            public void onError(String trace) {
+                getSettingsListner(null);
+            }
+        }).execute();
+    }
+    public void getSettingsListner(Settings settings){
+
+    }
     @Override
     protected String doInBackground(String... params) {
         // TODO: 12/29/2016 handle array length exceptions
@@ -421,6 +521,12 @@ public abstract class CustomAPI extends AsyncTask<String, Void, String> {
         }
         else if(mCustomAPIEnum == CustomAPIEnum.getPost){
             getPost(params[0], params[1]);
+        }
+        else if(mCustomAPIEnum == CustomAPIEnum.voteUp){
+            voteUp(params[0], params[1]);
+        }
+        else if(mCustomAPIEnum == CustomAPIEnum.voteDown){
+            voteDown(params[0], params[1]);
         }
         return "";
     }

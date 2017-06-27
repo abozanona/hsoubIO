@@ -75,7 +75,7 @@ public class postListItemAdapter extends RecyclerView.Adapter<postListItemAdapte
         holder.imgUserImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Main2Activity.instance.setFragment(new profileFragment());
+            Main2Activity.instance.setFragment(new profileFragment(), new Pair<String, String>("userName", obj.getUserID()));
             }
         });
         holder.lblTopicType.setOnClickListener(new View.OnClickListener() {

@@ -4,6 +4,8 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
 
+    //to maintain cookies
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.rond.hsoub"
         minSdkVersion 15

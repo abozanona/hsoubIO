@@ -7,7 +7,8 @@ package com.rond.hsoub.API;
 public enum ConnectionMethod {
     GET ("GET"),
     POST ("POST"),
-    PUT ("PUT");
+    PUT ("PUT"),
+    DELETE ("DELETE");
 
     private final String name;
 

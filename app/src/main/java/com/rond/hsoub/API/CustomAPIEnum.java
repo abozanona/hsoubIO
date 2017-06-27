@@ -9,5 +9,7 @@ public enum CustomAPIEnum {
     getLatestPostsDefault,
     getLatestCommunities,
     getNewCSRF_Tocken_Patters,
-    getPost
+    getPost,
+    voteUp,
+    voteDown
 }

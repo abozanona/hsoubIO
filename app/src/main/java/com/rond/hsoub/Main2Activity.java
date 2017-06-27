@@ -292,7 +292,8 @@ public class Main2Activity extends AppCompatActivity
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                setFragment(new PostsListFragment(), new Pair<>("link", JsonLinks.searchLink(query)), new Pair<>("searchPrefix", "{\"s\":\"" + query + "\",\"search_community_slug\":\"\",\"filter\":\"popular\",\"post_ids\":["));
+                query = query.replaceAll(" ", "+");
+                setFragment(new PostsListFragment(), new Pair<>("link", JsonLinks.searchLink(query)), new Pair<>("searchPrefix", "{\"s\":\"" + query + "\",\"search_community_slug\":\"\",\"filter\":\"popular\",\"in\":\"posts\",\"post_ids\":["));
                 return false;
             }
 

@@ -67,6 +67,7 @@
     <string name="top_week">هذا الأسبوع</string>
     <string name="top_month">هذا الشهر</string>
     <string name="top_year">هذه السنة</string>
+    <string name="discover">اكتشف</string>
 
     <!-- fragment_add_new_post -->
     <string name="add_link">أضف رابطاً</string>

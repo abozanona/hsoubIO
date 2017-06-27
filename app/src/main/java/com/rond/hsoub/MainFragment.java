@@ -79,6 +79,12 @@ public class MainFragment extends Fragment {
         frag.setArguments(bundle);
         adapter.addFragment(frag, getResources().getString(R.string.top_year));
 
+        bundle= new Bundle();
+        bundle.putString("link", JsonLinks.discover);
+        frag= new PostsListFragment();
+        frag.setArguments(bundle);
+        adapter.addFragment(frag, getResources().getString(R.string.discover));
+
 
         viewPager.setAdapter(adapter);
 

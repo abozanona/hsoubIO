@@ -26,6 +26,19 @@ public class JsonLinks {
     static String login_token(String token){
         return "https://io.hsoub.com/login?t=" + token;
     }
+    static String postUpvote(String postId){
+        return "https://io.hsoub.com/posts/" + postId + "/upvote.json";
+    }
+    static String postDownvote(String postId){
+        return "https://io.hsoub.com/posts/" + postId + "/downvote.json";
+    }
+    static String commentUpvote(String postId, String commentId){
+        return "https://io.hsoub.com/posts/" + postId + "/comments/" + commentId + "/upvote.json";
+    }
+    static String commentDownvote(String postId, String commentId){
+        return "https://io.hsoub.com/posts/" + postId + "/comments/" + commentId + "/downvote.json";
+    }
+
     public static String notifications = "https://io.hsoub.com/u/account_stats.json";
     public static String get_more_posts(String community){
         if(community==null || community.equals(""))
@@ -39,6 +52,7 @@ public class JsonLinks {
     public static String topWeek = "https://io.hsoub.com/top/week/load_more.json";
     public static String topMonth = "https://io.hsoub.com/top/month/load_more.json";
     public static String topYear = "https://io.hsoub.com/top/year/load_more.json";
+    public static String discover = "https://io.hsoub.com/top/discover/load_more.json";
     //// TODO: 12/30/2016 seek for it's link
     public static String explore = "";
     static String get_more_communities="https://io.hsoub.com/communities/load_more.json";
